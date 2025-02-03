@@ -16,7 +16,7 @@ const searchRouter = require('./routes/searchRoute');
 // // App Configurations
 const app = express();
 
-app.use(cors({ credentials: true, origin: 'https://analyzedbyiitians-client.onrender.com' }));
+app.use(cors({ credentials: true, origin: "https://www.analyzedbyiitians.com" }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
