@@ -31,7 +31,6 @@ export default function LoginPage() {
 
     if (response.ok) {
       const userInfo = await response.json();
-      console.log(userInfo);
       setUserInfo(userInfo); 
       setRedirect(true);
     } else {
