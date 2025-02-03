@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BACKEND_URL from "../config";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -43,7 +44,7 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch("http://localhost:4050/register", {
+      const response = await fetch(`${BACKEND_URL}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),
