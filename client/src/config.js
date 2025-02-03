@@ -1,3 +1,3 @@
 
-const BACKEND_URL = "http://localhost:4050"; 
+const BACKEND_URL = "https://analyzedbyiitians-api.onrender.com"; 
 export default BACKEND_URL;
