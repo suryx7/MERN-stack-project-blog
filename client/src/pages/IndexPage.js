@@ -1,10 +1,11 @@
 import Post from "../components/Post";
 import {useEffect, useState} from "react";
+import BACKEND_URL from "../config";
 
 export default function IndexPage() {
   const [posts,setPosts] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:4050/post').then(response => {
+    fetch(`${BACKEND_URL}/post`).then(response => {
       response.json().then(posts => {
         setPosts(posts);
       });

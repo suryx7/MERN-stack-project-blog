@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import BACKEND_URL from '../config';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ export default function Contact() {
   e.preventDefault();
 
   try {
-    const response = await fetch('http://localhost:4050/send-message', {
+    const response = await fetch(`${BACKEND_URL}/send-message`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

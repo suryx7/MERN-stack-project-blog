@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import BACKEND_URL from "../config";
 
 export default function ResetPasswordPage() {
   const { id, token } = useParams();
@@ -32,7 +33,7 @@ export default function ResetPasswordPage() {
     }
 
     try {
-      const response = await fetch(`http://localhost:4050/reset-password/${id}/${token}`, {
+      const response = await fetch(`${BACKEND_URL}/reset-password/${id}/${token}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ newPassword }),

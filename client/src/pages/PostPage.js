@@ -3,6 +3,7 @@ import {useParams, useNavigate} from "react-router-dom";
 import {formatISO9075} from "date-fns";
 import {UserContext} from "../components/UserContext";
 import {Link} from 'react-router-dom';
+import BACKEND_URL from "../config";
 
 
 export default function PostPage() {
@@ -12,7 +13,7 @@ export default function PostPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:4050/post/${id}`)
+    fetch(`${BACKEND_URL}/post/${id}`)
       .then(response => {
         response.json().then(postInfo => {
           setPostInfo(postInfo);
@@ -24,7 +25,7 @@ export default function PostPage() {
     const confirmDelete = window.confirm("Are you sure you want to delete this post?");
     if (!confirmDelete) return;
 
-    const response = await fetch(`http://localhost:4050/post/${id}`, {
+    const response = await fetch(`${BACKEND_URL}/post/${id}`, {
       method: "DELETE",
       credentials: "include",
     });
@@ -65,7 +66,7 @@ export default function PostPage() {
         </div>
       )}
       <div className="image">
-        <img src={`http://localhost:4050/${postInfo.cover}`} alt=""/>
+        <img src={`${BACKEND_URL}/${postInfo.cover}`} alt=""/>
       </div>
       <div className="content" dangerouslySetInnerHTML={{ __html: postInfo.content }} />
       <div className="author">by @{postInfo.author.username}</div>

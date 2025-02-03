@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { format } from "date-fns";
+import BACKEND_URL from "../config";
 
 export default function SearchHandlingPage() {
   const [searchResults, setSearchResults] = useState([]);
@@ -25,7 +26,7 @@ export default function SearchHandlingPage() {
     setSearchResults([]);
 
     try {
-      const response = await fetch(`http://localhost:4050/search?query=${query}`);
+      const response = await fetch(`${BACKEND_URL}/search?query=${query}`);
       if (!response.ok) {
         throw new Error("Failed to fetch search results");
       }
@@ -55,7 +56,7 @@ export default function SearchHandlingPage() {
                   <div className="image">
                     <Link to={`/post/${post._id}`}>
                       <img
-                        src={`http://localhost:4050/${post.cover}`}
+                        src={`${BACKEND_URL}/${post.cover}`}
                         alt={post.title || "Post cover"}
                         loading="lazy"
                       />
@@ -71,7 +72,7 @@ export default function SearchHandlingPage() {
                   <p className="info">
                     <Link to={`/post/${post._id}`} className="logofile">
                       <img  
-                        src={`http://localhost:4050/${post.logofile}`} 
+                        src={`${BACKEND_URL}/${post.logofile}`} 
                         alt={post.title || "logofile"} 
                         className="logofile-img"
                       />

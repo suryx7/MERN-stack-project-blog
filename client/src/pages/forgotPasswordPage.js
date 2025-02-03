@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BACKEND_URL from "../config";
 
 export default function ForgotPasswordPage() {
     const [email, setEmail] = useState("");
@@ -6,7 +7,7 @@ export default function ForgotPasswordPage() {
 
   async function handleForgotPassword(e) {
     e.preventDefault();
-    const response = await fetch("http://localhost:4050/forgot-password", {
+    const response = await fetch(`${BACKEND_URL}/forgot-password`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),

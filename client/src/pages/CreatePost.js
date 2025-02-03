@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import Editor from "../components/Editor";
+import BACKEND_URL from "../config";
 
 export default function CreatePost() {
   const [title, setTitle] = useState('');
@@ -39,7 +40,7 @@ export default function CreatePost() {
     }
 
     try {
-      const response = await fetch('http://localhost:4050/post', {
+      const response = await fetch(`${BACKEND_URL}/post`, {
         method: 'POST',
         body: data,
         credentials: 'include',

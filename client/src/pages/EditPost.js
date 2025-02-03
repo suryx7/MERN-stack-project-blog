@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Editor from "../components/Editor";
+import BACKEND_URL from "../config";
 
 export default function EditPost() {
   const { id } = useParams();
@@ -14,7 +15,7 @@ export default function EditPost() {
   
   
   useEffect(() => {
-    fetch(`http://localhost:4050/post/${id}`)
+    fetch(`${BACKEND_URL}/post/${id}`)
     .then((response) => response.json())
     .then((postInfo) => {
       setTitle(postInfo.title);
@@ -54,7 +55,7 @@ export default function EditPost() {
       data.set("logofile", logofile?.[0]); 
     }
 
-    const response = await fetch(`http://localhost:4050/post/${id}`, {
+    const response = await fetch(`${BACKEND_URL}/post/${id}`, {
       method: "PUT",
       body: data,
       credentials: "include",

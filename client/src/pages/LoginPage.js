@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../components/UserContext";
 import { Link } from "react-router-dom";
+import BACKEND_URL from "../config";
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -21,7 +22,7 @@ export default function LoginPage() {
       setError(''); 
     }
 
-    const response = await fetch('http://localhost:4050/login', {
+    const response = await fetch(`${BACKEND_URL}/login`, {
       method: 'POST',
       body: JSON.stringify({ username, password }), 
       headers: { 'Content-Type': 'application/json' },

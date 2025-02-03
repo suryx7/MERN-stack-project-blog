@@ -3,13 +3,14 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
 import search_icon from "../assets/search-b.png";
 import logo from '../assets/favicon.ico';
+import BACKEND_URL from "../config";
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:4050/profile", {
+    fetch(`${BACKEND_URL}/profile`, {
       method: "GET",
       credentials: "include",
     })
@@ -30,7 +31,7 @@ export default function Header() {
 
   function logout() {
    
-    fetch("http://localhost:4050/logout", {
+    fetch(`${BACKEND_URL}/logout`, {
       credentials: "include",
       method: "POST",
     }).then(() => {
