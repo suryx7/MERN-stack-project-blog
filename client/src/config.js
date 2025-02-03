@@ -1,3 +1,3 @@
 
-const BACKEND_URL = "https://analyzedbyiitians-api.onrender.com"; 
+const BACKEND_URL = "https://api.analyzedbyiitians.com"; 
 export default BACKEND_URL;
