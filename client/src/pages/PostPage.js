@@ -38,14 +38,14 @@ export default function PostPage() {
     }
   }
 
-  if (!postInfo) return '';
+  if (!postInfo) return <div>Loading...</div>;
 
   return (
     <div className="post-page">
       <h1>{postInfo.title}</h1>
       <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
       <p className="courseOwner">{postInfo.courseOwner}</p>
-      {role === "ADMIN" && (
+      {userInfo?.role === "ADMIN" && (
         <div className="edit-row">
           <div className="btn-cotainer">
             <Link className="edit-btn" to={`/edit/${postInfo._id}`}>
