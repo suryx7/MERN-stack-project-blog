@@ -45,7 +45,7 @@ export default function PostPage() {
       <h1>{postInfo.title}</h1>
       <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
       <p className="courseOwner">{postInfo.courseOwner}</p>
-      {userInfo.id === postInfo.author._id && (
+      {role === "ADMIN" && (
         <div className="edit-row">
           <div className="btn-cotainer">
             <Link className="edit-btn" to={`/edit/${postInfo._id}`}>
