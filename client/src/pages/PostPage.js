@@ -69,7 +69,6 @@ export default function PostPage() {
         <img src={`${BACKEND_URL}/${postInfo.cover}`} alt=""/>
       </div>
       <div className="content" dangerouslySetInnerHTML={{ __html: postInfo.content }} />
-      <div className="author">by @{postInfo.author.username}</div>
     </div>
   );
 }
