@@ -6,6 +6,7 @@ export default function IndexPage() {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false); 
   const observer = useRef();
 
   const lastPostElementRef = useCallback(
@@ -23,14 +24,17 @@ export default function IndexPage() {
 
   useEffect(() => {
     const fetchPosts = async () => {
+      setLoading(true); 
       try {
         const response = await fetch(`${BACKEND_URL}/post?page=${page}&limit=5`);
         const data = await response.json();
 
-        setPosts((prevPosts) => [...prevPosts, ...data.posts]); // Correct response handling
-        setHasMore(data.hasMore); // Update hasMore based on backend response
+        setPosts((prevPosts) => [...prevPosts, ...data.posts]);
+        setHasMore(data.hasMore);
       } catch (error) {
         console.error("Failed to fetch posts:", error);
+      } finally {
+        setLoading(false); 
       }
     };
 
@@ -54,7 +58,10 @@ export default function IndexPage() {
           );
         }
       })}
-      {!hasMore && <p style={{ textAlign: "center" }}>No more posts to load.</p>}
+      {loading && <p style={{ textAlign: "center" }}>Loading...</p>} {/* Loading indicator */}
+      {!hasMore && !loading && (
+        <p style={{ textAlign: "center" }}>No more posts to load.</p>
+      )}
     </>
   );
 }
