@@ -94,13 +94,25 @@ const updatePost = async (req, res) => {
 
 const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find().populate('author', 'username').sort({ createdAt: -1 }).limit(20);
-    res.json(posts);
+    const page = parseInt(req.query.page) || 1;      
+    const limit = parseInt(req.query.limit) || 5;    
+    const skip = (page - 1) * limit;                 
+
+    const posts = await Post.find()
+      .populate('author', 'username')
+      .sort({ createdAt: -1 })                       
+      .skip(skip)                                   
+      .limit(limit);                                
+    const totalPosts = await Post.countDocuments();  
+    const hasMore = skip + posts.length < totalPosts; 
+
+    res.json({ posts, hasMore });  
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 const getPostById = async (req, res) => {
   try {
