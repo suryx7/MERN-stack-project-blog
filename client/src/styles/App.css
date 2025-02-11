@@ -598,59 +598,101 @@ footer {
   flex-direction: column;
   gap: 10px;
   padding: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   animation: pulse 1.5s infinite ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.skeleton-image, .skeleton-title, .skeleton-summary, .skeleton-date {
+  background-color: #e0e0e0;
+  border-radius: 4px;
 }
 
 .skeleton-image {
   width: 100%;
   height: 180px;
-  background-color: #e0e0e0;
-  border-radius: 8px;
-}
-
-.skeleton-texts {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
 .skeleton-title {
   width: 70%;
   height: 20px;
-  background-color: #e0e0e0;
-  border-radius: 4px;
+  margin: 10px 0;
 }
 
 .skeleton-summary {
   width: 90%;
   height: 14px;
-  background-color: #e0e0e0;
-  border-radius: 4px;
+  margin: 5px 0;
 }
 
 .skeleton-date {
   width: 40%;
   height: 12px;
-  background-color: #e0e0e0;
-  border-radius: 4px;
+  margin: 5px 0;
 }
 
 @keyframes pulse {
-  0% {
-    background-color: #e0e0e0;
-  }
-
-  50% {
-    background-color: #f0f0f0;
-  }
-
-  100% {
-    background-color: #e0e0e0;
-  }
+  0% { background-color: #e0e0e0; }
+  50% { background-color: #f0f0f0; }
+  100% { background-color: #e0e0e0; }
 }
 
+/* Footer */
+.footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-box {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .post {
+    grid-template-columns: 1fr;
+  }
+
+  .skeleton-post {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .skeleton-image {
+    height: 150px;
+  }
+
+  .skeleton-title {
+    width: 80%;
+    height: 18px;
+  }
+
+  .skeleton-summary {
+    width: 95%;
+    height: 12px;
+  }
+
+  .skeleton-date {
+    width: 50%;
+    height: 10px;
+  }
+}
