@@ -1,12 +1,14 @@
 import Post from "../components/Post";
 import { useEffect, useState, useRef, useCallback } from "react";
 import BACKEND_URL from "../config";
+import '../styles/App.css';
+
 
 export default function IndexPage() {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(true);
   const observer = useRef();
 
   const lastPostElementRef = useCallback(
@@ -42,7 +44,7 @@ export default function IndexPage() {
   }, [page]);
 
   return (
-    <>
+    <div>
       {posts.map((post, index) => {
         if (index === posts.length - 1) {
           return (
@@ -58,10 +60,22 @@ export default function IndexPage() {
           );
         }
       })}
-      {loading && <p style={{ textAlign: "center" }}>Loading...</p>} {/* Loading indicator */}
+
+      {loading &&
+        Array.from({ length: 3 }).map((_, index) => (
+          <div className="skeleton-post" key={index}>
+            <div className="skeleton-image" />
+            <div className="skeleton-texts">
+              <div className="skeleton-title" />
+              <div className="skeleton-summary" />
+              <div className="skeleton-date" />
+            </div>
+          </div>
+        ))}
+
       {!hasMore && !loading && (
         <p style={{ textAlign: "center" }}>No more posts to load.</p>
       )}
-    </>
+    </div>
   );
 }
