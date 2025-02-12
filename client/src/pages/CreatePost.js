@@ -11,7 +11,7 @@ export default function CreatePost() {
   const [courseOwner, setCourseOwner] = useState('');
   const [logoFile, setLogoFile] = useState(null);
   const [redirect, setRedirect] = useState(false);
-  const wordLimit = 100;
+  const wordLimit = 70;
 
   
   const handleSummaryChange = (ev) => {
