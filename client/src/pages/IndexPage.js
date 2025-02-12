@@ -65,10 +65,21 @@ export default function IndexPage() {
         Array.from({ length: 3 }).map((_, index) => (
           <div className="skeleton-post" key={index}>
             <div className="skeleton-image" />
-            <div className="skeleton-texts">
+            <div className="texts">
               <div className="skeleton-title" />
-              <div className="skeleton-summary" />
-              <div className="skeleton-date" />
+              <div className="skeleton-info"> 
+                <p className="skeleton-logo" />
+                <p className="skeleton-courseowner" />
+              </div>
+            <div className="skeleton-summary" />
+            <div className="skeleton-summary" />
+            <div className="skeleton-summary" />
+            <div className="skeleton-summary" />
+            <div className="skeleton-summary" />   
+            <div className="skeleton-summary" />   
+            <div className="skeleton-summary" />   
+            <div className="skeleton-summary" />   
+            <div className="skeleton-date" />
             </div>
           </div>
         ))}
