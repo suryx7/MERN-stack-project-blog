@@ -101,7 +101,7 @@ const forgotPassword = async (req, res) => {
       secret + oldUser.password,
       { expiresIn: "15m" }
     );
-    const resetLink = `http://localhost:3050/reset-password/${oldUser._id}/${resetToken}`;
+    const resetLink = `https://www.analyzedbyiitians.com/reset-password/${oldUser._id}/${resetToken}`;
 
 
     await transporter.sendMail({
